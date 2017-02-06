@@ -1,0 +1,33 @@
+<link href="https://dl.dropboxusercontent.com/u/3688633/motion/css/bootstrap/bootstrap.min.css" rel="stylesheet">  
+<link href="https://dl.dropboxusercontent.com/u/3688633/motion/css/jquery-ui-1.8.20.custom.css" rel="stylesheet"> 
+<link href="https://dl.dropboxusercontent.com/u/3688633/motion/css/jquery.handsontable.css" rel="stylesheet">
+<link href="https://dl.dropboxusercontent.com/u/3688633/motion/css/jquery.motionchart.css" rel="stylesheet">
+<link href="https://dl.dropboxusercontent.com/u/3688633/motion/css/jquery.contextMenu.css" rel="stylesheet">
+<script src="https://dl.dropboxusercontent.com/u/3688633/motion/js/jquery-1.7.2.min.js"></script>
+<script src="https://dl.dropboxusercontent.com/u/3688633/motion/js/dependencies.min.js"></script>
+<script src="https://dl.dropboxusercontent.com/u/3688633/motion/js/custom-bootstrap.js"></script>
+<script src="https://dl.dropboxusercontent.com/u/3688633/motion/js/jquery.handsontable.js"></script>
+<script src="https://dl.dropboxusercontent.com/u/3688633/motion/js/jquery.motionchart.js"></script>
+
+<script>
+  google.script.run.withSuccessHandler(chartren).datamanrev()
+
+  function chartren(data){
+    var array = JSON.parse(data);
+
+    $('.motionchart').motionchart({
+                      title: "都道府県，男女別人口及び人口性比",
+                      'data': array,
+                      mappings: {key: 1, x: 2, y: 3, size: 4, color: 5, category: 0},
+                      scalings: {x:"quadnomial", y:"ordinal", size:"ordinal", color:"linear"},
+                      colorPalette: {	"Blue-Red": {from: "rgb(0,0,255)", to: "rgb(255,0,0)"}},
+                      color: "Red-Blue",
+                      play: true,
+                      loop: true
+                  });
+  
+  }
+
+</script>
+
+<div class="motionchart" style="width:890px; height:500px;"></div>
